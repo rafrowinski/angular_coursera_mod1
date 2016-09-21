@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myFirstApp">
   <head>
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+    <title>Angrylar</title>
   </head>
 
   <body>
-    Coursera angular test site for me
+    <div ng-controller="myFirstController">
+      <h1>This be some codez of {{name}}</h1>
+      <input type="text" ng-model="name" />
+    </div>
   </body>
 </html>
