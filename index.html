@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html ng-app="myFirstApp">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="angular.js"></script>
     <script src="app.js"></script>
-    <title>Angrylar</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-theme.css"/>
+
+    <title>Lunch check</title>
+
+    <style media="screen">
+      .greenFont {
+        color: green
+      }
+      .redFont {
+        color: red
+      }
+      .correctInput {
+        border: 1px solid green
+      }
+      .incorrectInput {
+        border: 1px solid red
+      }
+    </style>
   </head>
 
   <body>
-    <div ng-controller="myFirstController">
-      <h1>This be some codez of {{name}}</h1>
-      <input type="text" ng-model="name" />
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Check your lunch menu</h1>
+        <div ng-controller="myFirstController">
+          <p class="lead">
+            Just type in the products separated by an ',' and press the button below (I'm not counting empty items)
+          </p>
+          <div class="row">
+            <div class="col-md-12">
+              <input class="form-control" type="text" ng-blur="cropList()" ng-model="productList" />
+              <br/>
+              <a class="btn btn-lg btn-default" ng-class="{{inputClass}}" href="#" role="button" ng-click="checkList()">Check If Too Much</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="fancyMessageBox">
+              <div class="col-md-12" id="error" ng-show="isIncorrectInput && isListChecked">
+                <p class="lead redFont">
+                  Please enter data first
+                </p>
+              </div>
+              <div class="col-md-12" id="medal" ng-show="isMedalEarned && !isIncorrectInput && isListChecked">
+                <p class="lead greenFont">
+                  Enjoy!
+                </p>
+                <img src="http://www.echineselearning.com/image/newsletter/kids/500xNxissue-goodjob.jpg.pagespeed.ic.VMWtzz4E3u.jpg" alt="a lot of hands showing thumbs up" />
+              </div>
+              <div class="col-md-12" id="justNo" ng-show="!isMedalEarned && !isIncorrectInput && isListChecked">
+                <p class="lead greenFont">
+                  Too much!
+                </p>
+                <img src="https://cdn.meme.am/instances/500x/36030018.jpg" alt="just a dissapointed sloth" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
