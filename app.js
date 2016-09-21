@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var maxProducts = 5;
+  var maxProducts = 3;
 
   angular.module('myFirstApp', [])
   .controller('myFirstController', ControlMe);
@@ -11,7 +11,7 @@
     $scope.isMedalEarned = false;
     $scope.isListChecked = false;
     $scope.isIncorrectInput = false;
-    $scope.inputClass = ""
+    $scope.inputClass = "";
     $scope.checkList = function() {
       $scope.isIncorrectInput = $scope.productList === '';
       $scope.isListChecked = true;
@@ -21,8 +21,6 @@
         $scope.productList = productList.toString();
         $scope.isMedalEarned = isListOk(productList);
       }
-
-      $scope.inputClass = getInputClass($scope.isIncorrectInput)
     };
     $scope.cropList = function() {
       var productList = getProductList($scope.productList);
@@ -49,7 +47,7 @@
     return clearedList;
   }
 
-  function getInputClass(isInputCorrect) {
-    return isInputCorrect ? "inputCorrect" : "inputIncorrect"
-  }
+  // function getInputClass(isInputCorrect) {
+  //   return isInputCorrect ? "inputCorrect" : "inputIncorrect"
+  // }
 })();
